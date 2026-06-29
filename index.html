@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R. Volvo — Plano de Troca de Óleo para Caminhões Volvo</title>
+  <meta name="description" content="A troca de óleo no período certo melhora a vida útil do motor em até 90%. Conheça nosso plano sob medida para caminhões Volvo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0e0f11;
+      --bg-card:  #17191c;
+      --bg-card2: #26282c;
+      --border:   #2a2d32;
+      --text:     #f0f2f5;
+      --muted:    #818c98;
+      --silver:   #b3b3b3;
+      --amber:    #b3b3b3;
+      --amber-dim: rgba(179,179,179,0.1);
+      --red:      #e74c3c;
+      --green:    #27ae60;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(14,15,17,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; align-items: center; }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-cta {
+      background: var(--amber);
+      color: var(--bg);
+      font-weight: 700; font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ── SHOCK HERO ── */
+    .shock {
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 5% 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    .shock::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(231,76,60,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .shock::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .shock-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(231,76,60,0.1);
+      border: 1px solid rgba(231,76,60,0.35);
+      color: #ff8a80;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px;
+      padding: 7px 16px; border-radius: 100px;
+      margin-bottom: 32px; position: relative;
+    }
+
+    .pulse {
+      width: 7px; height: 7px;
+      background: var(--red);
+      border-radius: 50%; position: relative;
+    }
+    .pulse::after {
+      content: '';
+      position: absolute; inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--red);
+      animation: pulseAnim 1.6s ease-out infinite;
+    }
+    @keyframes pulseAnim {
+      0%   { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2.2); }
+    }
+
+    .shock-stat {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(5rem, 18vw, 13rem);
+      font-weight: 900; line-height: 0.9;
+      color: var(--red);
+      letter-spacing: -4px;
+      margin-bottom: 16px; position: relative;
+    }
+    .shock-stat sub {
+      font-size: 0.28em; vertical-align: super;
+      letter-spacing: 0; color: var(--red);
+    }
+
+    .shock-headline {
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      font-weight: 700; color: var(--text);
+      max-width: 700px; line-height: 1.35;
+      margin-bottom: 20px; position: relative;
+    }
+    .shock-headline em { font-style: normal; color: var(--amber); }
+
+    .shock-sub {
+      font-size: 1rem; color: var(--muted);
+      max-width: 560px; line-height: 1.75;
+      margin-bottom: 44px; position: relative;
+    }
+
+    .shock-arrow {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: var(--border);
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      position: relative;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(8px); }
+    }
+    .shock-arrow svg { width: 22px; height: 22px; fill: var(--border); }
+
+    .shock-content {
+      display: flex; flex-direction: column; align-items: center;
+      transition: opacity 0.6s ease;
+    }
+    .shock-content.fading { opacity: 0; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 80px 5%; }
+
+    .tag {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--silver); margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ── IMPACTO ── */
+    .impacto { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .impacto-inner { max-width: 1080px; margin: 0 auto; }
+
+    .impacto-top { text-align: center; margin-bottom: 52px; }
+
+    .impacto-top h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800; color: var(--text);
+      line-height: 1.2; margin-bottom: 14px;
+    }
+
+    .impacto-top p { font-size: 0.95rem; color: var(--muted); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    .fatos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .fato {
+      border-radius: 14px; padding: 26px 22px;
+      display: flex; flex-direction: column; gap: 12px;
+      border: 1px solid;
+    }
+
+    .fato-danger {
+      background: rgba(231,76,60,0.06);
+      border-color: rgba(231,76,60,0.2);
+    }
+
+    .fato-ok {
+      background: rgba(39,174,96,0.06);
+      border-color: rgba(39,174,96,0.2);
+    }
+
+    .fato-icon { font-size: 28px; }
+
+    .fato h3 { font-size: 0.92rem; font-weight: 700; line-height: 1.35; }
+    .fato-danger h3 { color: #ff8a80; }
+    .fato-ok h3 { color: #6fcf97; }
+
+    .fato p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── PLANO ── */
+    .plano {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .plano::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(251,189,36,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .plano-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+
+    .plano-copy h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 800; color: var(--text);
+      line-height: 1.2; margin-bottom: 18px;
+    }
+    .plano-copy h2 span { color: var(--amber); }
+
+    .plano-copy > p {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.75; margin-bottom: 28px;
+    }
+
+    .plano-bullets { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+
+    .bullet {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.92rem; color: var(--text); font-weight: 500;
+    }
+
+    .bullet-icon {
+      width: 30px; height: 30px;
+      background: var(--amber-dim);
+      border: 1px solid rgba(251,189,36,0.25);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+    }
+
+    .parcelamento {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--amber-dim);
+      border: 1.5px solid rgba(251,189,36,0.3);
+      border-radius: 12px; padding: 16px 20px;
+    }
+    .parcelamento-icon { font-size: 22px; }
+    .parcelamento-text { font-size: 0.88rem; color: var(--text); line-height: 1.45; }
+    .parcelamento-text strong { font-size: 1rem; color: var(--amber); font-weight: 800; display: block; }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px 32px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .form-card-badge {
+      position: absolute; top: -14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--amber); color: var(--bg);
+      font-size: 11px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 6px 18px; border-radius: 100px;
+      white-space: nowrap; font-family: 'Outfit', sans-serif;
+    }
+
+    .form-card h3 {
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--text); margin-bottom: 6px; text-align: center;
+    }
+
+    .form-card > p {
+      font-size: 0.83rem; color: var(--muted);
+      text-align: center; margin-bottom: 28px; line-height: 1.55;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+
+    .form-group label {
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--silver); text-transform: uppercase; letter-spacing: 0.8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 0.92rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg-card2);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(251,189,36,0.1);
+    }
+
+    .form-group input::placeholder { color: var(--muted); }
+
+    .select-wrapper { position: relative; }
+    .select-wrapper::after {
+      content: '▾'; position: absolute; right: 16px; top: 50%;
+      transform: translateY(-50%); color: var(--muted);
+      pointer-events: none; font-size: 14px;
+    }
+
+    .form-group select option { background: var(--bg-card2); color: var(--text); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--amber);
+      color: var(--bg);
+      font-size: 0.98rem; font-weight: 800;
+      padding: 16px; border: none; border-radius: 10px;
+      cursor: pointer; margin-top: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: 'Outfit', sans-serif; letter-spacing: 0.3px;
+    }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 12px; line-height: 1.5; }
+
+    /* SUCCESS */
+    .form-success {
+      display: none; flex-direction: column;
+      align-items: center; text-align: center; gap: 14px; padding: 20px 0;
+    }
+    .form-success .success-icon {
+      width: 64px; height: 64px;
+      background: rgba(39,174,96,0.1);
+      border: 1.5px solid rgba(39,174,96,0.3);
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-size: 28px;
+    }
+    .form-success h4 { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .form-success p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 260px; }
+
+    /* ── NÚMEROS ── */
+    .prova { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .prova-inner { max-width: 960px; margin: 0 auto; }
+    .prova-top { text-align: center; margin-bottom: 44px; }
+    .prova-top h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: var(--text); }
+
+    .numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .numero {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px 20px; text-align: center;
+      transition: border-color 0.2s;
+    }
+    .numero:hover { border-color: rgba(251,189,36,0.3); }
+
+    .numero-val { font-family: 'Outfit', sans-serif; font-size: 2.6rem; font-weight: 900; color: var(--text); line-height: 1; margin-bottom: 6px; }
+    .numero-val span { color: var(--amber); }
+    .numero-label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+
+    /* ── COMO FUNCIONA ── */
+    .como { background: var(--bg); }
+    .como-inner { max-width: 960px; margin: 0 auto; }
+    .como-top { text-align: center; margin-bottom: 52px; }
+    .como-top h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--text); }
+
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; position: relative; }
+
+    .steps::before {
+      content: '';
+      position: absolute; top: 27px; left: 12%; right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--amber), var(--silver));
+      z-index: 0; opacity: 0.35;
+    }
+
+    .step { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; position: relative; z-index: 1; }
+
+    .step-num {
+      width: 54px; height: 54px;
+      background: var(--bg-card2);
+      border: 2px solid var(--amber);
+      color: var(--amber); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 900;
+    }
+
+    .step h4 { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+    .step p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 80px 5%; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-final::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(251,189,36,0.05) 0%, transparent 70%);
+    }
+    .cta-final h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900;
+      color: var(--text); margin-bottom: 12px; position: relative;
+    }
+    .cta-final h2 span { color: var(--amber); }
+    .cta-final p { font-size: 0.95rem; color: var(--muted); margin-bottom: 32px; position: relative; }
+
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    .btn-wpp {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff;
+      font-weight: 700; font-size: 1rem;
+      padding: 16px 30px; border-radius: 8px; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-wpp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+
+    .btn-tel {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--text);
+      font-weight: 600; font-size: 1rem;
+      padding: 16px 30px; border-radius: 8px; text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-tel:hover { border-color: var(--amber); color: var(--amber); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #09090a;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 32px 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { display: flex; align-items: center; }
+    .footer-logo img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.7; }
+    footer p { font-size: 12.5px; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wpp-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      width: 56px; height: 56px; background: #25D366;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wpp-float:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.6); }
+    .wpp-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .plano-inner { grid-template-columns: 1fr; gap: 40px; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .steps::before { display: none; }
+      .numeros { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .numeros { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      nav .nav-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img src="logo.png" alt="R. Volvo" />
+    </div>
+    <a href="#orcamento" class="nav-cta">Receber Orçamento</a>
+  </nav>
+
+  <!-- SHOCK HERO -->
+  <section class="shock">
+    <div class="shock-eyebrow">
+      <div class="pulse"></div>
+      Todo motorista de Volvo precisa saber disso
+    </div>
+    <div class="shock-content" id="shockContent">
+      <div class="shock-stat" id="shockStat"></div>
+      <h1 class="shock-headline" id="shockHeadline"></h1>
+      <p class="shock-sub" id="shockSub"></p>
+    </div>
+    <div class="shock-arrow">
+      <span>Entenda o impacto</span>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+    </div>
+  </section>
+
+  <!-- IMPACTO -->
+  <section class="impacto">
+    <div class="impacto-inner">
+      <div class="impacto-top">
+        <span class="tag">O que acontece na prática</span>
+        <h2>O produto errado faz mais estrago do que a falta de troca</h2>
+        <p>Motor Volvo pesado é projetado com tolerâncias precisas. Cada componente depende do óleo e filtro corretos para funcionar como o fabricante garantiu.</p>
+      </div>
+      <div class="fatos-grid">
+        <div class="fato fato-danger">
+          <div class="fato-icon">🔥</div>
+          <h3>Óleo fora da especificação aumenta o atrito em até 4x</h3>
+          <p>Viscosidade errada significa filme de lubrificação insuficiente. Os metais entram em contato, geram calor e criam desgaste irreversível nos mancais e tuchos.</p>
+        </div>
+        <div class="fato fato-danger">
+          <div class="fato-icon">🔩</div>
+          <h3>Filtro genérico não filtra o que o motor Volvo exige</h3>
+          <p>Filtros de qualidade inferior deixam passar partículas que o motor Volvo não tolera. O resultado aparece meses depois — e o custo é alto.</p>
+        </div>
+        <div class="fato fato-danger">
+          <div class="fato-icon">💸</div>
+          <h3>Uma retífica de motor Volvo pesado passa de R$ 30.000</h3>
+          <p>O problema começa pequeno e invisível. Quando aparece o sintoma, o dano já está feito. Economizar no produto da troca sai muito mais caro no final.</p>
+        </div>
+        <div class="fato fato-ok">
+          <div class="fato-icon">✅</div>
+          <h3>Produto original = proteção garantida pelo fabricante</h3>
+          <p>Óleo e filtros na especificação correta da Volvo garantem que cada componente trabalhe dentro das condições que o projeto previu — sem surpresas.</p>
+        </div>
+        <div class="fato fato-ok">
+          <div class="fato-icon">📈</div>
+          <h3>Motor bem cuidado roda muito mais sem parar</h3>
+          <p>Caminhões com histórico de trocas com produtos corretos apresentam vida útil de motor significativamente superior e muito menos paradas não programadas.</p>
+        </div>
+        <div class="fato fato-ok">
+          <div class="fato-icon">🚛</div>
+          <h3>Caminhão na estrada é dinheiro entrando</h3>
+          <p>Cada dia parado na oficina por falha evitável é prejuízo direto. A troca certa, com o produto certo, é o que mantém a roda girando.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANO + FORM -->
+  <section class="plano" id="orcamento">
+    <div class="plano-inner">
+      <div class="plano-copy">
+        <span class="tag">Como trabalhamos</span>
+        <h2>Troca de óleo com<br /><span>produto certo para o seu motor</span></h2>
+        <p>
+          Todo caminhão Volvo tem uma especificação de óleo e filtros definida pelo fabricante.
+          Na R. Volvo usamos exatamente esses produtos — sem substituição, sem adaptação,
+          sem genérico. O motor recebe o que foi projetado para receber.
+        </p>
+        <div class="plano-bullets">
+          <div class="bullet">
+            <div class="bullet-icon">🛢️</div>
+            Óleo com viscosidade e aditivos na especificação exata Volvo
+          </div>
+          <div class="bullet">
+            <div class="bullet-icon">🔩</div>
+            Filtros de óleo, ar e combustível originais ou linha premium homologada
+          </div>
+          <div class="bullet">
+            <div class="bullet-icon">📋</div>
+            Laudo técnico com registro de todos os produtos utilizados
+          </div>
+          <div class="bullet">
+            <div class="bullet-icon">⚡</div>
+            Atendimento com hora marcada — sem fila, sem espera
+          </div>
+          <div class="bullet">
+            <div class="bullet-icon">🔍</div>
+            Equipe especializada exclusivamente em caminhões Volvo
+          </div>
+        </div>
+        <div class="parcelamento">
+          <div class="parcelamento-icon">💳</div>
+          <div class="parcelamento-text">
+            <strong>Parcele em 3x no cartão sem juros</strong>
+            Orçamento transparente, sem surpresa na hora de pagar
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-card" id="contato">
+        <div class="form-card-badge">Orçamento gratuito</div>
+        <h3>Receba o orçamento da sua troca</h3>
+        <p>Informe os dados do seu caminhão e nossa equipe envia o orçamento direto no seu WhatsApp.</p>
+
+        <form id="leadForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required />
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(51) 9 9999-9999" required />
+          </div>
+          <div class="form-group">
+            <label for="ano">Ano do caminhão</label>
+            <input type="number" id="ano" name="ano" placeholder="Ex: 2019" min="1990" max="2025" required />
+          </div>
+          <div class="form-group">
+            <label for="km">Quantos mil km o caminhão roda por mês?</label>
+            <div class="select-wrapper">
+              <select id="km" name="km" required>
+                <option value="" disabled selected>Selecione a faixa</option>
+                <option value="5a7">5.000 – 7.000 km/mês</option>
+                <option value="7a10">7.000 – 10.000 km/mês</option>
+                <option value="11a13">11.000 – 13.000 km/mês</option>
+                <option value="acima13">Mais de 13.000 km/mês</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit">Quero meu orçamento →</button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✅</div>
+          <h4>Orçamento solicitado!</h4>
+          <p>Nossa equipe vai entrar em contato pelo WhatsApp em breve com o orçamento para o seu caminhão.</p>
+        </div>
+
+        <p class="form-note">Sem spam. Seus dados são usados apenas para enviar o orçamento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL -->
+  <section class="prova">
+    <div class="prova-inner">
+      <div class="prova-top">
+        <span class="tag">Resultados reais</span>
+        <h2>Caminhões Volvo que confiam na R. Volvo</h2>
+      </div>
+      <div class="numeros">
+        <div class="numero">
+          <div class="numero-val">+<span>800</span></div>
+          <div class="numero-label">Trocas de óleo realizadas</div>
+        </div>
+        <div class="numero">
+          <div class="numero-val"><span>10</span>+</div>
+          <div class="numero-label">Anos atendendo frotas Volvo</div>
+        </div>
+        <div class="numero">
+          <div class="numero-val"><span>100</span>%</div>
+          <div class="numero-label">Peças e óleos homologados</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="como">
+    <div class="como-inner">
+      <div class="como-top">
+        <span class="tag">Simples assim</span>
+        <h2>Como funciona o atendimento R. Volvo</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>Solicite o orçamento</h4>
+          <p>Preencha o formulário com seu nome, WhatsApp e faixa de km rodados</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>Receba o orçamento</h4>
+          <p>Nossa equipe envia o valor com os produtos corretos para o seu motor</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>Agende com hora marcada</h4>
+          <p>Sem fila, sem espera — atendimento exclusivo para caminhões Volvo</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h4>Motor no ponto certo</h4>
+          <p>Troca feita com produto original, laudo técnico e registro de serviço</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <h2>Seu Volvo merece o<br /><span>produto que foi feito pra ele.</span></h2>
+    <p>Fale com a nossa equipe pelo WhatsApp ou ligue direto. Atendemos de segunda a sábado.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/5551999999999?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20plano%20de%20troca%20de%20óleo%20para%20meu%20caminhão%20Volvo." class="btn-wpp" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chamar no WhatsApp
+      </a>
+      <a href="tel:+5551999999999" class="btn-tel">📞 (51) 9 9999-9999</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <img src="logo.png" alt="R. Volvo" />
+    </div>
+    <p>© 2025 R. Volvo · Oficina Especializada em Caminhões Volvo · Todos os direitos reservados</p>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/5551999999999?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20plano%20de%20troca%20de%20óleo%20para%20meu%20caminhão%20Volvo." class="wpp-float" target="_blank" title="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const mensagens = [
+      {
+        stat: '90<sub>%</sub>',
+        headline: 'Das falhas prematuras em motores Volvo<br />têm uma causa em comum: <em>óleo errado</em>',
+        sub: 'Não é o desgaste natural — é o produto inadequado. Motor Volvo tem especificação própria de viscosidade, aditivos e filtros. Usar o produto errado, mesmo trocando no prazo, destrói o motor por dentro a cada quilômetro.'
+      },
+      {
+        stat: '',
+        headline: 'Todo motorista conhece <em>alguém</em> que fundiu o motor <strong style="color:var(--red)">cedo demais</strong>',
+        sub: 'Na maioria das vezes, não foi falta de troca. Foi a troca feita com o produto errado. E o pior: o motor não avisa. Você só descobre quando já é tarde.'
+      }
+    ];
+
+    let atual = 0;
+
+    function exibirMensagem(idx) {
+      const m = mensagens[idx];
+      document.getElementById('shockStat').innerHTML = m.stat;
+      document.getElementById('shockHeadline').innerHTML = m.headline;
+      document.getElementById('shockSub').textContent = '';
+      document.getElementById('shockSub').innerHTML = m.sub;
+    }
+
+    function proximaMensagem() {
+      const content = document.getElementById('shockContent');
+      content.classList.add('fading');
+      setTimeout(() => {
+        atual = (atual + 1) % mensagens.length;
+        exibirMensagem(atual);
+        content.classList.remove('fading');
+      }, 600);
+    }
+
+    exibirMensagem(0);
+    setInterval(proximaMensagem, 10000);
+
+    document.getElementById('whatsapp').addEventListener('input', function (e) {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length >= 11) v = v.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+      else if (v.length >= 7) v = v.replace(/(\d{2})(\d{4,5})(\d{0,4})/, '($1) $2-$3');
+      else if (v.length >= 3) v = v.replace(/(\d{2})(\d+)/, '($1) $2');
+      e.target.value = v;
+    });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const wpp  = document.getElementById('whatsapp').value;
+      const km   = document.getElementById('km').options[document.getElementById('km').selectedIndex].text;
+      console.log({ nome, wpp, km });
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'flex';
+    }
+  </script>
+
+</body>
+</html>
