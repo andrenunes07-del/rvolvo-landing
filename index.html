@@ -792,14 +792,30 @@
       e.target.value = v;
     });
 
+    const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzrocwgVLCsoJXblhKP05H0lfFUmEVZWFRy5TlU-41qqMdXeYGgAJoEE7IQTUBIIYPoHg/exec';
+
     function handleSubmit(e) {
       e.preventDefault();
-      const nome = document.getElementById('nome').value;
-      const wpp  = document.getElementById('whatsapp').value;
-      const km   = document.getElementById('km').options[document.getElementById('km').selectedIndex].text;
-      console.log({ nome, wpp, km });
-      document.getElementById('leadForm').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'flex';
+      const nome     = document.getElementById('nome').value;
+      const wpp      = document.getElementById('whatsapp').value;
+      const ano      = document.getElementById('ano').value;
+      const kmSelect = document.getElementById('km');
+      const km       = kmSelect.options[kmSelect.selectedIndex].text;
+
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+
+      fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, whatsapp: wpp, ano, km })
+      })
+      .finally(() => {
+        document.getElementById('leadForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'flex';
+      });
     }
   </script>
 
