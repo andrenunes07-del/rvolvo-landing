@@ -304,6 +304,29 @@
       white-space: nowrap; font-family: 'Outfit', sans-serif;
     }
 
+    .selos {
+      display: flex; gap: 10px; margin-bottom: 20px;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .selo {
+      display: flex; align-items: center; gap: 8px;
+      border-radius: 10px; padding: 10px 14px;
+      font-family: 'Outfit', sans-serif; font-weight: 800;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+      flex: 1; min-width: 130px;
+    }
+    .selo-red {
+      background: rgba(231,76,60,0.12);
+      border: 1.5px solid var(--red);
+      color: var(--red);
+    }
+    .selo-silver {
+      background: rgba(179,179,179,0.08);
+      border: 1.5px solid var(--silver);
+      color: var(--silver);
+    }
+    .selo-icon { font-size: 18px; flex-shrink: 0; }
+
     .form-card h3 {
       font-size: 1.15rem; font-weight: 800;
       color: var(--text); margin-bottom: 6px; text-align: center;
@@ -632,6 +655,18 @@
       <!-- FORM -->
       <div class="form-card" id="contato">
         <div class="form-card-badge">Orçamento gratuito</div>
+
+        <div class="selos">
+          <div class="selo selo-red">
+            <span class="selo-icon">🔥</span>
+            <span>Desconto<br>imperdível</span>
+          </div>
+          <div class="selo selo-silver">
+            <span class="selo-icon">🌐</span>
+            <span>Desconto<br>exclusivo pelo site</span>
+          </div>
+        </div>
+
         <h3>Receba o orçamento da sua troca</h3>
         <p>Informe os dados do seu caminhão e nossa equipe envia o orçamento direto no seu WhatsApp.</p>
 
